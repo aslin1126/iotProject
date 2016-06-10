@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'iotserver.test.test'),
+    url(r'^test/(.+)$', 'iotserver.test.test'),
 )

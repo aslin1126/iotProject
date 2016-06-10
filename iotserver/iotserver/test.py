@@ -6,10 +6,10 @@ from django.template import Context
  
 from django.http import HttpResponse
  
-def test(request):
+def test(request, data ):
 
-	if request.method == 'GET':
-		return HttpResponse("<p> this is get </p>")
-	else:
-		return HttpResponse("this is post")
- 
+    #http://192.168.1.118:8080/test/data   -- this is the format 
+	print "temp is" + data 
+	return HttpResponse("OK")
+		
+
