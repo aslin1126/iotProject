@@ -14,53 +14,54 @@ class MotionSensor(Sensor):
         print "%s: pin: %d state: %d" % (t.asctime(), channel, self.getState())
         if(self.getState()):
         	#send message to client
-			self.httpclient.sendMotionAlert(str(self.getState()))
+			self.httpclient.sendData("motion=1")
 
 
 def boardSensorThread( relay,board, httpclient ,duration):	
 	lightIsOn = False
 	tempIsOn = False
+	dataStr =None
 	while True:
 	
 		light = board.light()
 		temp = board.temperature()
 		print "%s:  light:%d temp:%d " % (t.asctime(), light,temp)
-
+		dataStr ="light=" + str(light)  
 		if(board.light()<160):
 			if(lightIsOn == False):
 				print "on light relay"
 				relay.switch(0,1)
 				lightIsOn = True
-				
+				dataStr += "(on)"	
 				
 		else:
 			if(lightIsOn == True):
 				print "off light relay"
 				relay.switch(0,0)
 				lightIsOn = False
+				dataStr += "(off)"	
 				
+		dataStr += ",temp=" + str(temp)
+		
+			
 		if(board.temperature()<100):
 			if(tempIsOn == False):
 				print "on temp relay"
 				relay.switch(1,1)
 				tempIsOn = True
+				dataStr += "(on)"
+		
 				
 		else:
 			if(tempIsOn == True):
 				print "off temp relay"
 				relay.switch(1,0)
 				tempIsOn = False
+				dataStr += "(off)"
 				
-				
-		tempstr=None
-		lightstr =None
-		if(temp!=None):
-			tempstr =str(temp)
 		
-		if(light !=None):
-			lightstr =str(light)
 			
-		httpclient.sendBoardData(tempstr, lightstr)
+		httpclient.sendData(dataStr)
 		
 		t.sleep(duration)
 	
