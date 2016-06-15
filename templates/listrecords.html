@@ -1,25 +1,38 @@
+
 <html>
-<head>
-<title>{{ title }}</title>
-</head>
-<body>
-<h1>{{ title }}</h1>
-<p><b>Note:</b> The 25 most recent records are as follows. The enclosed is the most recent record.</p>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+        setInterval(function () { autoloadpage(); }, 5000); // it will call the function autoload() after each 30 seconds. 
+        function autoloadpage() {
+            $.ajax({
+                url: "http://192.168.1.118:8080/record/",
+                type: "GET",
+                success: function(data) {
+                    $("div#wrapper").html(data); // here the wrapper is main div
+                }
+            });
+        }
+        </script>
+    </head>
+    <body>
+    <div id="wrapper">
+		<h1>{{ title }}</h1>
+		<p><b>Note:</b> The 25 most recent records are as follows. The enclosed is the most recent record.</p>
 
-<table border="solid">
-{% for t in records1 %}
-  <tr><td>{{ t.0 }}</td>
-  </tr>
-{% endfor %}
-</table>
+		<table border="solid">
+		{% for t in records1 %}
+		  <tr><td>{{ t.0 }}</td>
+		  </tr>
+		{% endfor %}
+		</table>
 
-<table>
-{% for t in records2 %}
-  <tr><td>{{ t.0 }}</td>
-  </tr>
-{% endfor %}
-</table>
-
-</body>
-</html>
-
+		<table>
+		{% for t in records2 %}
+		  <tr><td>{{ t.0 }}</td>
+		  </tr>
+		{% endfor %}
+		</table>
+    </div>
+ </body>
+ </html>
