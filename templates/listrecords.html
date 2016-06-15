@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>{{ title }}</title>
+</head>
+<body>
+<h1>{{ title }}</h1>
+<p><b>Note:</b> The 25 most recent records are as follows. The enclosed is the most recent record.</p>
+
+<table border="solid">
+{% for t in records1 %}
+  <tr><td>{{ t.0 }}</td>
+  </tr>
+{% endfor %}
+</table>
+
+<table>
+{% for t in records2 %}
+  <tr><td>{{ t.0 }}</td>
+  </tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
+
