@@ -41,7 +41,7 @@ def boardSensorThread( relay,board, httpclient ,duration):
 				lightIsOn = False
 				dataStr += "(off)"	
 				
-		dataStr += ",temp=" + str(temp)
+		dataStr += ",temperature=" + str(temp)
 		
 			
 		if(board.temperature()<100):

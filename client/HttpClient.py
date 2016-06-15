@@ -7,7 +7,7 @@ class HttpClient:
 
 	def sendData(self, data):
 		print data 
-		getUrl = self.url + "test/"+ data
+		getUrl = self.url + "saverecord/"+ data
 		f = urllib2.urlopen(getUrl)
 		f.close()
 

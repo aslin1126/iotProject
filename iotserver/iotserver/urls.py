@@ -8,13 +8,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'iotserver.views.home'),
-    url(r'^test/(.+)$', 'iotserver.test.test'),
 
+    url(r'^$', 'iotserver.views.home'),
     url(r'^record/$', 'iotserver.views.listrecords'),
     url(r'^saverecord/(.+)$', 'iotserver.views.saverecord'),
-    url(r'^accounts/login/$', 'login'),
-    url(r'^accounts/logout/$', logout),
 )
 
