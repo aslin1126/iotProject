@@ -21,15 +21,20 @@
 		<p><b>Note:</b> The 25 most recent records are as follows. The enclosed is the most recent record.</p>
 
 		<table border="solid">
+		<tr><th>Record Time</th><th>Record Detail</th></tr>
 		{% for t in records1 %}
-		  <tr><td>{{ t.0 }}</td>
+		  <tr><td>{{ t.1 }}</td><td>{{ t.0 }}</td>
 		  </tr>
 		{% endfor %}
 		</table>
-
+		
+		<br>
+		<br>
+		<br>
 		<table>
+		<tr><th>Record Time</th><th>Record Detail</th></tr>
 		{% for t in records2 %}
-		  <tr><td>{{ t.0 }}</td>
+		  <tr><td>{{ t.1 }}</td><td>{{ t.0 }}</td>
 		  </tr>
 		{% endfor %}
 		</table>
